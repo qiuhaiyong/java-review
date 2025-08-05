@@ -32,5 +32,9 @@ public class StringMethod {
         System.out.println(name.substring(6));//截取后面的字符
         // name.substring(0,5)表示从索引0开始截取，截取到索引5 - 1 = 4位置
         System.out.println(name.substring(2,5));//llo
+
+
+        System.out.println(name.substring(0,35));
+        System.out.println(name.substring(35));
     }
 }
