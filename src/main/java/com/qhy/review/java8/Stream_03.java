@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class Stream_03 {
     private static List<Author> getAuthors() {
@@ -67,13 +68,14 @@ public class Stream_03 {
         System.out.println("==4. sorted==");
         authors.stream()
                 .distinct()
-                .sorted(new Comparator<Author>() {
-                    @Override
-                    public int compare(Author o1, Author o2) {
-                        System.out.println("o1.getAge() - o2.getAge()" + (o1.getAge() - o2.getAge()));
-                        return o1.getAge() - o2.getAge();
-                    }
-                })
+                .sorted((o1, o2) -> o1.getAge() - o2.getAge())
                 .forEach(author -> System.out.println(author.getAge()));
+
+
+        System.out.println("==5. flatMap==");
+        authors.stream()
+                .flatMap(author -> author.getBooks().stream())
+                .distinct()
+                .forEach(book -> System.out.println(book.getName()));
     }
 }
